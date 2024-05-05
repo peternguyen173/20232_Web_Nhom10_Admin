@@ -50,28 +50,28 @@ const SigninPage = () => {
 
 
     return (
-        // <div className='formpage'>
-        //     <div className='tdn'>
-        //         <label>Tên đăng nhập</label>
-        //         <input
-        //             type='email'
-        //             placeholder='Email'
-        //             value={email}
-        //             onChange={(e) => setEmail(e.target.value)}
-        //         />
-        //     </div>
-        //     <div>
-        //         <label>Mật khẩu</label>
-        //         <input
-        //             type='password'
-        //             placeholder='Password'
-        //             value={password}
-        //             onChange={(e) => setPassword(e.target.value)}
-        //         />
-        //     </div>
+        <div className='formpage'>
+            <div className='tdn'>
+                <label>Tên đăng nhập</label>
+                <input
+                    type='email'
+                    placeholder='Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>Mật khẩu</label>
+                <input
+                    type='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
 
-        //     <button onClick={handleSignin}>Sign in</button>
-        // </div>
+           
+        </div>
     )
 }
 
