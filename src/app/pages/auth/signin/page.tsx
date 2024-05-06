@@ -70,7 +70,7 @@ const SigninPage = () => {
                 />
             </div>
 
-           
+            <button onClick={handleSignin}>Sign in</button>
         </div>
     )
 }
