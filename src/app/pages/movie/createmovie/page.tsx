@@ -123,7 +123,7 @@ const CreateMoviePage = () => {
                 movie.duration === 0 ||
                 movie.language === ""
             ) {
-                toast.error("Please fill all the fields", {
+                toast.error('Hãy điền đẩy đủ các trường thông tin', {
                     position: toast.POSITION.TOP_CENTER,
                 });
                 return;
@@ -135,7 +135,7 @@ const CreateMoviePage = () => {
             if (movie.portraitImg) {
                 portraitImgUrl = await uploadImage(movie.portraitImg);
                 if (!portraitImgUrl) {
-                    toast.error("Portrait Image upload failed", {
+                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
                         position: toast.POSITION.TOP_CENTER,
                     });
                     return;
@@ -144,7 +144,7 @@ const CreateMoviePage = () => {
             if (movie.landscapeImg) {
                 landscapeImgUrl = await uploadImage(movie.landscapeImg);
                 if (!landscapeImgUrl) {
-                    toast.error("Landscape Image upload failed", {
+                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
                         position: toast.POSITION.TOP_CENTER,
                     });
                     return;
@@ -169,12 +169,12 @@ const CreateMoviePage = () => {
                 const data = await response.json();
                 console.log("Movie creation successful", data);
 
-                toast.success("Movie Created Successfully", {
+                toast.success('Hãy điền đẩy đủ các trường thông tin', {
                     position: toast.POSITION.TOP_CENTER,
                 });
             } else {
                 console.error("Movie creation failed", response.statusText);
-                toast.error("Movie Creation Failed", {
+                toast.error('Hãy điền đẩy đủ các trường thông tin', {
                     position: toast.POSITION.TOP_CENTER,
                 });
             }
