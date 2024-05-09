@@ -1,3 +1,53 @@
-.tdn {
+/* .tdn {
     padding-right: 42px;
-}
+} */
+
+/* auth.css */
+
+.formpage {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .formpage .tdn,
+  .formpage div {
+    margin-bottom: 10px;
+  }
+  
+  .formpage label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .formpage input[type="email"],
+  .formpage input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .formpage button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .formpage button:hover {
+    background-color: #45a049;
+  }
+  
+  .toast-container {
+    width: 300px;
+    margin-top: 20px;
+    z-index: 9999;
+  }
