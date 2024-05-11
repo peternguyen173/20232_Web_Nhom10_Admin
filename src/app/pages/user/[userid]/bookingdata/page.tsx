@@ -24,49 +24,6 @@ const ProfilePage = () => {
                     console.log(data)
                     setBookings(data.data)
 
-
-                    // {
-                    //     "_id": "651d70e7c54f60ba058333d2",
-                    //     "showTime": "20:27",
-                    //     "showDate": "2023-10-04T19:34:14.000Z",
-                    //     "movieId": "65101a2acc5b257e6f2816a5",
-                    //     "screenId": "65101370556fed70cb10ca1d",
-                    //     "seats": [
-                    //         {
-                    //             "row": "E",
-                    //             "col": 0,
-                    //             "seat_id": "10",
-                    //             "price": 300,
-                    //             "_id": "651d70e7c54f60ba058333d3"
-                    //         },
-                    //         {
-                    //             "row": "E",
-                    //             "col": 0,
-                    //             "seat_id": "9",
-                    //             "price": 300,
-                    //             "_id": "651d70e7c54f60ba058333d4"
-                    //         },
-                    //         {
-                    //             "row": "E",
-                    //             "col": 1,
-                    //             "seat_id": "1",
-                    //             "price": 300,
-                    //             "_id": "651d70e7c54f60ba058333d5"
-                    //         },
-                    //         {
-                    //             "row": "E",
-                    //             "col": 1,
-                    //             "seat_id": "2",
-                    //             "price": 300,
-                    //             "_id": "651d70e7c54f60ba058333d6"
-                    //         }
-                    //     ],
-                    //     "totalPrice": 1200,
-                    //     "paymentId": "123456789",
-                    //     "paymentType": "online",
-                    //     "userId": "651c19f156b991c66296fb73",
-                    //     "__v": 0
-                    // }
                 }
                 else {
                     console.log(data)

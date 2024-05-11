@@ -102,6 +102,7 @@ const CreateMoviePage = () => {
     }
     const handleCreateMovie = async () => {
         try {
+
             if (
                 movie.title === "" ||
                 movie.description === "" ||
@@ -109,8 +110,9 @@ const CreateMoviePage = () => {
                 movie.duration === 0 ||
                 movie.language === ""
             ) {
-                toast.error("Please fill all the fields", {
+                toast.error('Hãy điền đẩy đủ các trường thông tin', {
                     position: 'top-center',
+
                 });
                 return;
             }
@@ -121,8 +123,9 @@ const CreateMoviePage = () => {
             if (movie.portraitImg) {
                 portraitImgUrl = await uploadImage(movie.portraitImg);
                 if (!portraitImgUrl) {
-                    toast.error("Portrait Image upload failed", {
-                        position: 'top-center',
+                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
+                    position: 'top-center',
+
                     });
                     return;
                 }
@@ -130,8 +133,9 @@ const CreateMoviePage = () => {
             if (movie.landscapeImg) {
                 landscapeImgUrl = await uploadImage(movie.landscapeImg);
                 if (!landscapeImgUrl) {
-                    toast.error("Landscape Image upload failed", {
-                        position: 'top-center',
+                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
+                    position: 'top-center',
+
                     });
                     return;
                 }
@@ -155,13 +159,14 @@ const CreateMoviePage = () => {
                 const data = await response.json();
                 console.log("Movie creation successful", data);
 
-                toast.success("Movie Created Successfully", {
+                toast.success('Hãy điền đẩy đủ các trường thông tin', {
                     position: 'top-center',
                 });
             } else {
                 console.error("Movie creation failed", response.statusText);
-                toast.error("Movie Creation Failed", {
-                    position: 'top-center',
+                toast.error('Hãy điền đẩy đủ các trường thông tin', {
+                    position: toast.POSITION.TOP_CENTER,
+
                 });
             }
         }
