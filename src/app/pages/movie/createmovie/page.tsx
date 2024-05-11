@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-// import {Knock} from '@knocklabs/node'
+
 interface Movie {
     title: string;
     description: string;
@@ -102,19 +102,6 @@ const CreateMoviePage = () => {
     }
     const handleCreateMovie = async () => {
         try {
-            // const knockClient = new Knock("sk_test_CxObjuVUM9OkqeH58OrwTcHl-15km9uxc6nouPtGJqM");
-            //  console.log(knockClient);
-  
-            // await knockClient.notify('movie',{
-            //     actor: "123456",
-            //     // recipients: otherUsers.map(user=>user.password),
-            //     recipients:["123"],
-            //     data : {
-            //         workout: {
-            //             value:  "ok"
-            //         }
-            //     }
-            // });
 
             if (
                 movie.title === "" ||
@@ -124,7 +111,8 @@ const CreateMoviePage = () => {
                 movie.language === ""
             ) {
                 toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
+
                 });
                 return;
             }
@@ -136,7 +124,8 @@ const CreateMoviePage = () => {
                 portraitImgUrl = await uploadImage(movie.portraitImg);
                 if (!portraitImgUrl) {
                     toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                        position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
+
                     });
                     return;
                 }
@@ -145,7 +134,8 @@ const CreateMoviePage = () => {
                 landscapeImgUrl = await uploadImage(movie.landscapeImg);
                 if (!landscapeImgUrl) {
                     toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                        position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
+
                     });
                     return;
                 }
@@ -170,12 +160,13 @@ const CreateMoviePage = () => {
                 console.log("Movie creation successful", data);
 
                 toast.success('Hãy điền đẩy đủ các trường thông tin', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
             } else {
                 console.error("Movie creation failed", response.statusText);
                 toast.error('Hãy điền đẩy đủ các trường thông tin', {
                     position: toast.POSITION.TOP_CENTER,
+
                 });
             }
         }
