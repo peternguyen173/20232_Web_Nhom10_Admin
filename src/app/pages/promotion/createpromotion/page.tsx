@@ -41,7 +41,7 @@ const CreatePromotionPage: React.FC = () => {
                 promotion.type === ''
             ) {
                 toast.error('Please fill all the fields', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
                 return;
             }
@@ -51,7 +51,7 @@ const CreatePromotionPage: React.FC = () => {
 
             if (expiryDate1 <= startDate1) {
                 toast.error('Ngày hết hạn khuyến mãi phải lớn hơn ngày bắt đầu', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
                 return;
             }
@@ -71,12 +71,12 @@ const CreatePromotionPage: React.FC = () => {
                 console.log('Promotion created successfully', data);
 
                 toast.success('Promotion Created Successfully', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
             } else {
                 console.error('Promotion creation failed', response.statusText);
                 toast.error('Promotion Creation Failed', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
             }
         } catch (error) {

@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import './movie.css';
 
 interface Movie {
     title: string;
@@ -165,7 +166,7 @@ const CreateMoviePage = () => {
             } else {
                 console.error("Movie creation failed", response.statusText);
                 toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
 
                 });
             }
@@ -176,53 +177,71 @@ const CreateMoviePage = () => {
     }
 
     return (
+        <section>
+            <form>
         <div className="formpage">
+            <div className = "hu">
+            <div className = "hi">
+        <label>Tên phim: </label>
             <input
                 type="text"
                 name="title"
-                placeholder="Title"
+                placeholder="Tên phim"
                 value={movie.title}
                 onChange={handleInputChange}
             />
+            </div>
             <div>
+            <label>Đạo diễn: </label>
                 <input
                     type="text"
-                    placeholder="Director"
+                    placeholder="Đạo diễn"
                     name="director"
                     value={movie.director}
                     onChange={handleInputChange} // Sử dụng handleInputChange cho trường đạo diễn
                 />
             </div>
-            <div>
+            </div>
+            <br />
+            <div className = "hu">
+            <div className = "hi">
+            <label>Ngôn ngữ: </label>
                 <input
                     type="text"
-                    placeholder="Language"
+                    placeholder="Ngôn ngữ"
                     name="language"
                     value={movie.language}
                     onChange={handleInputChange}
                 />
             </div>
-
             <div>
+            <label>Ngày ra mắt: </label>
                 <input
                     type="date"
-                    placeholder="Release Date"
+                    placeholder="Ngày ra mắt:"
                     name="releasedate"
                     value={releaseDate}
                     onChange={handleDateChange}
                 />
             </div>
+            </div>
+            <br />
+            <div className = "ntd3">
+            <label>Nội dung: </label>
             <input
+                className = "outform"
                 type="text"
                 name="description"
-                placeholder="Description"
+                placeholder="Nội dung phim"
                 value={movie.description}
                 onChange={handleInputChange}
             />
+            </div>
             <br />
-
-            <label>Portrait Image</label>
+            <div className = "ntd3">
+            <label >Ảnh đại diện: </label>
             <input
+            
                 type="file"
                 accept="image/*"
                 onChange={(event) => {
@@ -231,8 +250,10 @@ const CreateMoviePage = () => {
                     }
                 }}
             />
+            </div>
             <br />
-            <label>Landscape Image</label>
+            <div className = "ntd3">
+            <label>Ảnh bìa: </label>
             <input
                 type="file"
                 accept="image/*"
@@ -242,21 +263,24 @@ const CreateMoviePage = () => {
                     }
                 }}
             />
+            </div>
             <br />
-
-            <label>Rated</label>
+            <div className = "ntd3">
+            <label>Đánh giá: </label>
             <input
                 type="text"
                 name="rated"
-                placeholder="Rated"
+                placeholder="Đánh giá"
                 value={movie.rated}
                 onChange={handleInputChange}
             />
+            </div>
             <br />
-            <div>
-                <p>Chọn thể loại:</p>
+            <p>Chọn thể loại:</p>
+            <br />
+            <div className = "f">
                 {genres.map((genre) => (
-                    <label key={genre}>
+                    <label className = "hh" key={genre}>
                         <input
                             type="checkbox"
                             name="genre"
@@ -270,8 +294,8 @@ const CreateMoviePage = () => {
 
 
             <br />
-
-            <label>Thời lượng</label>
+            <div className = "ntd3">
+            <label>Thời lượng: </label>
             <input
                 type="number"
                 name="duration"
@@ -279,8 +303,10 @@ const CreateMoviePage = () => {
                 value={movie.duration}
                 onChange={handleInputChange}
             />
+            </div>
             <br />
-            <div>
+            <div className = "ntd3">
+                <label>Tên diễn viên: </label>
                 <input
                     type="text"
                     placeholder="Tên diễn viên"
@@ -295,7 +321,8 @@ const CreateMoviePage = () => {
             <button onClick={handleCreateMovie}>Create Movie</button>
 
         </div>
-
+        </form>
+        </section>
     )
 }
 export default CreateMoviePage;
