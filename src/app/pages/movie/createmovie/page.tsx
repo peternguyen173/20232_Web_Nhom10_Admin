@@ -318,7 +318,7 @@ const CreateMoviePage = () => {
             <div>
                 <p>{movie.cast.join(", ")}</p>
             </div>
-            <button onClick={handleCreateMovie}>Create Movie</button>
+            <button onClick={handleCreateMovie}>Thêm phim</button>
 
         </div>
         </form>

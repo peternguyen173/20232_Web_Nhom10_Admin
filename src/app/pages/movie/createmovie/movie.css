@@ -78,11 +78,12 @@ label {
 }
 
 .hh {
-    width: 100px;
+    width: 120px;
     height: 56px;
 }
 
 .f {
     display: flex;
+    width: 600px;
 }
 
