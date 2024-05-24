@@ -83,13 +83,74 @@ const CreateScreenPage: React.FC = () => {
             setRowPrice(0);
         } else {
             toast.error('Hãy điền đầy đủ các trường thông tin', {
-                position: 'top-center',
+                position: toast.POSITION.TOP_CENTER,
             });
         }
     };
 
 
+    // const handleRowPriceChange = (rowIndex: number, value: string) => {
+    //     const price = parseFloat(value);
+    //     const updatedRows = [...screen.rows];
+    //     updatedRows[rowIndex].price = isNaN(price) ? 0 : price;
+    //     setScreen({ ...screen, rows: updatedRows });
+    // };
 
+    // const addRow = () => {
+    //     // Assuming you have an input for the number of seats, let's call it numSeatsInput
+    //     const numSeats = parseInt(prompt('Enter the number ofd seats for this row:') || '0', 10);
+    //     const rowPrice = parseFloat(prompt('Enter the price for this row:') || '0');
+
+
+    //     if (numSeats > 0) {
+    //         const newSeats: Seat[] = Array.from({ length: numSeats }, (_, index) => ({
+    //             seat_id: (index + 1).toString(),
+    //             row: "",
+    //             isWalkway: false,
+    //         }));
+
+    //         const newRow: Row = {
+    //             rowname: '',
+    //             cols: [{ seats: newSeats }],
+    //             price: rowPrice, // Set the price for this row
+    //         };
+
+    //         setScreen((prevScreen) => ({
+    //             ...prevScreen,
+    //             rows: [...prevScreen.rows, newRow],
+    //         }));
+    //     } else {
+    //         // Handle invalid input or cancellation
+    //         console.log('Invalid input or cancelled.');
+    //     }
+    // };
+
+    // const handleSeatChange = (rowIndex: number, colIndex: number, seatIndex: number, isWalkway: boolean) => {
+    //     setScreen((prevScreen) => {
+    //         const updatedRows = [...prevScreen.rows];
+    //         const updatedSeat = { ...updatedRows[rowIndex].cols[colIndex].seats[seatIndex], isWalkway };
+    //         updatedRows[rowIndex].cols[colIndex].seats[seatIndex] = updatedSeat;
+
+    //         const seatToModify = updatedSeat;
+    //         const selectedSeatIndex = selectedSeats.findIndex(
+    //             (s) => s.row === seatToModify.row && s.seat_id === seatToModify.seat_id
+    //         );
+
+    //         if (selectedSeatIndex > -1) {
+    //             // If the seat is already selected, remove it
+    //             setSelectedSeats((prevSelectedSeats) =>
+    //                 prevSelectedSeats.filter(
+    //                     (s) => !(s.row === seatToModify.row && s.seat_id === seatToModify.seat_id)
+    //                 )
+    //             );
+    //         } else {
+    //             // If the seat is not selected, add it to the selectedSeats array
+    //             setSelectedSeats((prevSelectedSeats) => [...prevSelectedSeats, seatToModify]);
+    //         }
+
+    //         return { ...prevScreen, rows: updatedRows };
+    //     });
+    // };
     const selectdeselectseat = (seat: Seat) => {
 
         setScreen((prevScreen) => {
@@ -132,10 +193,22 @@ const CreateScreenPage: React.FC = () => {
             return { ...prevScreen, rows: [...updatedRows] };
         });
     };
+    
 
 
-
-
+    // const handleRowNameChange = (rowIndex: number, value: string) => {
+    //     setScreen((prevScreen) => {
+    //         const updatedRows = [...prevScreen.rows];
+    //         updatedRows[rowIndex].rowname = value;
+    //         // Update rowname for all seats in the row
+    //         updatedRows[rowIndex].cols.forEach((col) => {
+    //             col.seats.forEach((seat) => {
+    //                 seat.row = value;
+    //             });
+    //         });
+    //         return { ...prevScreen, rows: updatedRows };
+    //     });
+    // };
 
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,7 +220,67 @@ const CreateScreenPage: React.FC = () => {
         setScreen({ ...screen, screenType: value });
     };
 
-   
+    // const generateSeatLayout = () => {
+    //     if (screen && selectedTime) {
+    //         const currentSchedule = movieSchedulesforDate.find(
+    //             (schedule: any) => schedule.showTime === selectedTime.showTime
+    //         );
+    //         if (currentSchedule) {
+    //             const notAvailableSeats = currentSchedule.notAvailableSeats;
+
+    //             return (
+    //                 <div>
+    //                     {screen.rows.map((row: any, rowIndex: any) => (
+    //                         <div className="seat-row" key={rowIndex}>
+    //                             <p className="rowname">{row.rowname}</p>
+    //                             <div className="seat-cols">
+    //                                 {row.cols[0].seats.map((seat: any, seatIndex: any) => {
+    //                                     seat.seatId = `${row.rowname}${seatIndex + 1}`;
+    //                                     seat.price = row.price;
+    //                                     seat.rowname = row.rowname;
+    //                                     let isNotAvailable = notAvailableSeats.some(
+    //                                         (notAvailableSeat: any) => (
+    //                                             notAvailableSeat.rowname === seat.rowname &&
+    //                                             notAvailableSeat.seat_id === seat.seat_id
+    //                                         )
+    //                                     );
+    //                                     return (
+    //                                         <div key={seatIndex}>
+    //                                             {seat.isWalkway ? (
+    //                                                 <span className='seat-iswalkway'>
+    //                                                     {seatIndex + 1}
+    //                                                 </span>
+    //                                             ) : (
+    //                                                 <span
+    //                                                     className={
+    //                                                         isNotAvailable
+    //                                                             ? 'seat-unavailable'
+    //                                                             : selectedSeats.find(
+    //                                                                 (s: any) =>
+    //                                                                     s.rowname === seat.rowname &&
+    //                                                                     s.seat_id === seat.seat_id
+    //                                                             )
+    //                                                                 ? 'seat-selected'
+    //                                                                 : 'seat-available'
+    //                                                     }
+    //                                                     onClick={() => selectdeselectseat(seat)}
+    //                                                 >
+    //                                                     {seatIndex + 1}
+    //                                                 </span>
+    //                                             )}
+    //                                         </div>
+    //                                     );
+    //                                 })}
+    //                             </div>
+    //                         </div>
+    //                     ))}
+    //                 </div>
+    //             );
+    //         }
+    //     }
+    //     return null;
+    // };
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -158,7 +291,7 @@ const CreateScreenPage: React.FC = () => {
                 screen.rows.length === 0
             ) {
                 toast.error('Hãy điền đầy đủ các trường thông tin', {
-                    position: 'top-center',
+                    position: toast.POSITION.TOP_CENTER,
                 });
                 return;
             }
@@ -178,12 +311,12 @@ const CreateScreenPage: React.FC = () => {
                 console.log('Screen creation successful', data);
 
                 toast.success('Thêm màn hình thành công', {
-                    position: 'top-center',
+                    position: toast.POSITION.TOP_CENTER,
                 });
             } else {
                 console.error('Screen creation failed', response.statusText);
                 toast.error('Thêm màn hình thất bại', {
-                    position: 'top-center',
+                    position: toast.POSITION.TOP_CENTER,
                 });
             }
         }
@@ -290,37 +423,48 @@ const CreateScreenPage: React.FC = () => {
                 <div className="curve-line"></div>
             </div>
 
-            {screen.rows.map((row: any, rowIndex: any) => (
-                <div className="seat-row" key={rowIndex}>
-                    <div className="seat-cols">
-                        {console.log(row.rowname)}
+            {screen ? (
+                <div>
 
-                        {row.cols[0].seats.map((seat: any, seatIndex: any) => {
-                            seat.seatId = `${row.rowname}${seatIndex + 1}`;
-                            seat.price = row.price;
-                            seat.rowname = row.rowname;
+                    {screen.rows.map((row: any, rowIndex: any) => (
+                        <div className="seat-row" key={rowIndex}>
+                            <div className="seat-cols">
+                                {console.log(row.rowname)}
 
-                            return (
+                                {row.cols[0].seats.map((seat: any, seatIndex: any) => {
+                                    seat.seatId = `${row.rowname}${seatIndex + 1}`;
+                                    seat.price = row.price;
+                                    seat.rowname = row.rowname;
 
-                                <div key={seatIndex}>
-                                    {seat.isWalkway ? (
-                                        <span className='seat-iswalkway'>
-                                            <div className='f'>{row.rowname}{seatIndex + 1}</div>
-                                        </span>
-                                    ) : (
-                                        <span
-                                            className={'seat-available'}
-                                            onClick={() => selectdeselectseat(seat)}
-                                        >
-                                            <div className='f'>{row.rowname}{seatIndex + 1}</div>
-                                        </span>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+                                    return (
+
+                                        <div key={seatIndex}>
+                                            {seat.isWalkway ? (
+                                                <span className='seat-iswalkway'>
+                                                    <div className='q'>{row.rowname}{seat.seat_id}</div>
+                                                </span>
+                                            ) : (
+                                                <span
+                                                    className={'seat-available'}
+                                                    onClick={() => selectdeselectseat(seat)}
+                                                >
+                                                    <div className='q'>{row.rowname}{seat.seat_id}</div>
+                                                </span>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+
+                            </div>
+                        </div>
+                    ))}
+                    <br></br>
+                   
                 </div>
-            ))}
+
+            ) : (
+                <p>Loading...</p>
+            )}
             <button onClick={handleSubmit}>Thêm màn hình</button>
         </div>
     );
