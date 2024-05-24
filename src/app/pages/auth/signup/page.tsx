@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import '../auth.css';
+import './auth.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const SignupPage = () => {
