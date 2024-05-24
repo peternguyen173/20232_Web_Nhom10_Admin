@@ -7,8 +7,6 @@
     flex-direction: column;
 }
 
-
-
 .selectseatpage .head {
     background-color: var(--col2);
     padding: 10px;
@@ -43,25 +41,7 @@
 }
 
 
-.curve-line {
-    width: calc(65% + 50px);
-    height: 60px;
-    left: 31%;
-    position: sticky;
-    display: flex;
-    top: 50px;
-    border-top: 2px solid #000;
-    border-radius: 50%;
-}
 
-.screen-text {
-    position: absolute;
-    top: 51%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    font-weight: bold;
-}
 
 
 
@@ -182,7 +162,8 @@
 
 /* Style for individual seat */
 .seat-available,
-.seat-unavailable {
+.seat-unavailable,
+.seat-iswalkway {
     width: 30px;
     height: 30px;
     display: flex;
@@ -195,17 +176,6 @@
 
 }
 
-.seat-iswalkway {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 5px;
-    margin-bottom: 2px;
-    background-color: red;
-
-}
 
 
 /* Style for unavailable seats */
@@ -218,7 +188,7 @@
 
 .seat-iswalkway {
     color: rgba(255, 255, 255, 0.7);
-    background-color: #f5f5f5;
+    background-color: white;
     border: 1px solid white;
 }
 
@@ -367,6 +337,36 @@ button {
     width: 25px;
 }
 
-.f {
-    font-size: 14px;
+.screen-text {
+    position: absolute;
+    top: 51%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
 }
+
+.edit-screen-page table {
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+.edit-screen-page {
+    margin: 20px;
+}
+
+.edit-screen-page th,
+.edit-screen-page td {
+    border: 1px solid #ddd;
+    /* Thêm viền cho cả ba cột */
+    padding: 8px;
+    text-align: left;
+}
+
+.edit-screen-page th:nth-child(2),
+.edit-screen-page td:nth-child(2) {
+    width: 70%;
+    /* Thay đổi độ rộng của cột Tên Phòng Chiếu tại đây */
+}
+
+/* Các style khác có thể tiếp tục ở đây */
