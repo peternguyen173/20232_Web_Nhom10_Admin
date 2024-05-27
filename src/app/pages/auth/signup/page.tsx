@@ -1,8 +1,6 @@
 'use client'
 import React, { useState } from 'react';
 import './auth.css';
-import logo from '../logo.png';
-import Image from 'next/image';
 import { ToastContainer, toast } from 'react-toastify';
 
 const SignupPage = () => {
@@ -48,62 +46,27 @@ const SignupPage = () => {
 
 
     return (
-        <div className='authout'>
-        <div className='authin'>
-            <div className="left">
-                <Image src={logo} alt="" className='img' />
-            </div>
-            <div className='right'>
-                <form
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}
-                >
-                    <div className="forminput_cont">
-                        <div><label>Tên đăng nhập</label></div> 
-                        <div>
-                            <input
-                                type='text'
-                                placeholder='Tên đăng nhập'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div className="forminput_cont">
-                        <div><label>Email</label></div> 
-                        <div> 
-                             <input
-                                type='email'
-                                placeholder='Email'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div> 
-                    </div>
-                    <div className="forminput_cont">
-                        <div><label>Mật khẩu</label></div> 
-                        <div> 
-                            <input
-                                type='password'
-                                placeholder='Password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div> 
-                    </div>
-                    <button type="submit" className="main_button"  onClick={handleSignup}>
-                      <span>  ĐĂNG KÍ </span>
-                    </button>
-
-                </form>
-               
-            </div>
+        <div className='formpage'>
+            <input
+                type='text'
+                placeholder='Name'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            <input
+                type='email'
+                placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button onClick={handleSignup}>Sign up</button>
         </div>
-    </div>
     )
 }
 

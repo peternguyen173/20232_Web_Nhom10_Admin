@@ -143,16 +143,28 @@ const DeleteMoviePage = () => {
 
     return (
         <div className="edit-movie-page">
+            <div className="fl-table">
             <br></br>
             <h2>Danh sách các phim:</h2>
             <br></br>
+            <table id="customers">
+            <thead>
+            <tr>
+               <th>Tên phim: </th>
+               <th>Chỉnh sửa</th>
+             </tr>
+             </thead>
+             <tbody>
 
             {movies.length > 0 && movies.map((movie) => (
-                <div key={movie._id}>
-                    <span>{movie.title}</span>
-                    <button onClick={() => handleDeleteMovie(movie._id)}>Xóa</button>
-                </div>
+                <tr key={movie._id}>
+                    <td>{movie.title}</td>
+                    <td><button onClick={() => handleDeleteMovie(movie._id)}>Xóa</button></td>
+                </tr>
             ))}
+            </tbody>
+            </table>
+            </div>
 
 
             <ToastContainer />

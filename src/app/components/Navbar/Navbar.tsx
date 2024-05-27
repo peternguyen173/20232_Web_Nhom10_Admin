@@ -98,6 +98,7 @@ const Navbar = () => {
                             {showMenu.movie && (
                                 <div className='menu'>
                                     <button onClick={() => handleRedirect('/pages/movie/createmovie')}>Thêm phim</button>
+                                    <button onClick={() => handleRedirect('/pages/movie/editmovie')}>Sửa phim</button>
                                     <button onClick={() => handleRedirect('/pages/movie/deletemovie')}>Xóa phim</button>
                                 </div>
                             )}
@@ -128,8 +129,8 @@ const Navbar = () => {
                             <Link href='/pages/promotion'>Khuyến mãi</Link>
                             {showMenu.promotion && (
                                 <div className='menu'>
-                                    <button onClick={() => handleRedirect('/promotion/createpromotion')}>Thêm khuyến mãi</button>
-                                    <button onClick={() => handleRedirect('/promotion/deletepromotion')}>Xóa khuyến mãi</button>
+                                    <button onClick={() => handleRedirect('/pages/promotion/createpromotion')}>Thêm khuyến mãi</button>
+                                    <button onClick={() => handleRedirect('/pages/promotion/deletepromotion')}>Xóa khuyến mãi</button>
                                 </div>
                             )}
                         </div>

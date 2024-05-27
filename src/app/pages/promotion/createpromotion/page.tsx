@@ -41,7 +41,7 @@ const CreatePromotionPage: React.FC = () => {
                 promotion.type === ''
             ) {
                 toast.error('Please fill all the fields', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
                 return;
             }
@@ -51,7 +51,7 @@ const CreatePromotionPage: React.FC = () => {
 
             if (expiryDate1 <= startDate1) {
                 toast.error('Ngày hết hạn khuyến mãi phải lớn hơn ngày bắt đầu', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
                 return;
             }
@@ -71,12 +71,12 @@ const CreatePromotionPage: React.FC = () => {
                 console.log('Promotion created successfully', data);
 
                 toast.success('Promotion Created Successfully', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
             } else {
                 console.error('Promotion creation failed', response.statusText);
                 toast.error('Promotion Creation Failed', {
-                    position: toast.POSITION.TOP_CENTER,
+                    position: 'top-center',
                 });
             }
         } catch (error) {
@@ -87,34 +87,41 @@ const CreatePromotionPage: React.FC = () => {
 
     return (
         <div className="formpage">
-            <h1>Create Promotion</h1>
+            <section>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <p>Tên khuyến mãi</p>
+            <h1>Tạo khuyến mãi</h1>
+            <br />
+            <br />
+            <div className = "ntd3">
+                    <label>Tên khuyến mãi: </label>
                     <input
+                         className = "outform"
                         type="text"
                         name="title"
-                        placeholder="Title"
+                        placeholder="Tên khuyến mãi"
                         value={promotion.title}
                         onChange={handleInputChange}
                     />
                 </div>
                 <br />
-                <div>
-                    <p>Mô tả</p>
+                <div className = "ntd3">
+                    <label>Mô tả: </label>
                     <input
+                        className = "outform"
                         type="text"
                         name="description"
-                        placeholder="Description"
+                        placeholder="Mô tả"
                         value={promotion.description}
                         onChange={handleInputChange}
                     />
                 </div>
                 <br />
                 <div>
-                    <p>Loại:</p>
-
-                    <label>
+                    <div className = "f">
+                    <label>Loại: </label>
+                <br />
+                <br />
+                    <label className = "hh">
                         <input
                             type="radio"
                             name="type"
@@ -122,9 +129,9 @@ const CreatePromotionPage: React.FC = () => {
                             checked={promotion.type === 'percentage'}
                             onChange={handleInputChange}
                         />
-                        Theo phần trăm
+                        Phần trăm
                     </label>
-                    <label>
+                    <label className = "hh">
                         <input
                             type="radio"
                             name="type"
@@ -134,11 +141,12 @@ const CreatePromotionPage: React.FC = () => {
                         />
                         Cố định
                     </label>
+                    </div>
                 </div>
-                <br></br>
+                
 
-                <div>
-                    <p>Lượng discount</p>
+                <div  className = "ntd3">
+                    <label>Lượng discount: </label>
                     <input
                         type="number"
                         name="discount"
@@ -147,8 +155,8 @@ const CreatePromotionPage: React.FC = () => {
                         onChange={handleInputChange}
                     /></div>
                 <br />
-                <div>
-                    <p>Ngày bắt đầu - kết thúc</p>
+                <div className = "ntd3">
+                    <p>Ngày bắt đầu - kết thúc: </p>
                     <br></br>
                     <input
                         type="date"
@@ -156,7 +164,7 @@ const CreatePromotionPage: React.FC = () => {
                         placeholder="Expiry Date"
                         value={promotion.startDate}
                         onChange={handleInputChange}
-                    />
+                    /> - 
                     <input
                         type="date"
                         name="expiryDate"
@@ -169,6 +177,7 @@ const CreatePromotionPage: React.FC = () => {
                 <br />
                 <button type="submit">Tạo khuyến mãi</button>
             </form>
+            </section>
             <ToastContainer />
         </div>
     );

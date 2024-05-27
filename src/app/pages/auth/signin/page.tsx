@@ -26,7 +26,7 @@ const SigninPage = () => {
                 console.log('Admin login successful', data);
 
                 toast.success('Admin Login Successful', {
-                    position: toast.POSITION.TOP_CENTER,
+                    // position: toast.POSITION.TOP_CENTER,
                 });
                 window.location.href = '/'; // Điều hướng đến trang chủ
 
@@ -35,7 +35,7 @@ const SigninPage = () => {
                 // Handle signup error
                 console.error('Admin login failed', response.statusText);
                 toast.error('Admin Login Failed', {
-                    position: toast.POSITION.TOP_CENTER,
+                    // position: toast.POSITION.TOP_CENTER,
                 });
             }
         }

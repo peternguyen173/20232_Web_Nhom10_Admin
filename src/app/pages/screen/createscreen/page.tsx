@@ -98,7 +98,7 @@ const CreateScreenPage: React.FC = () => {
 
     // const addRow = () => {
     //     // Assuming you have an input for the number of seats, let's call it numSeatsInput
-    //     const numSeats = parseInt(prompt('Enter the number of seats for this row:') || '0', 10);
+    //     const numSeats = parseInt(prompt('Enter the number ofd seats for this row:') || '0', 10);
     //     const rowPrice = parseFloat(prompt('Enter the price for this row:') || '0');
 
 
@@ -193,7 +193,7 @@ const CreateScreenPage: React.FC = () => {
             return { ...prevScreen, rows: [...updatedRows] };
         });
     };
-
+    
 
 
     // const handleRowNameChange = (rowIndex: number, value: string) => {
@@ -423,37 +423,48 @@ const CreateScreenPage: React.FC = () => {
                 <div className="curve-line"></div>
             </div>
 
-            {screen.rows.map((row: any, rowIndex: any) => (
-                <div className="seat-row" key={rowIndex}>
-                    <div className="seat-cols">
-                        {console.log(row.rowname)}
+            {screen ? (
+                <div>
 
-                        {row.cols[0].seats.map((seat: any, seatIndex: any) => {
-                            seat.seatId = `${row.rowname}${seatIndex + 1}`;
-                            seat.price = row.price;
-                            seat.rowname = row.rowname;
+                    {screen.rows.map((row: any, rowIndex: any) => (
+                        <div className="seat-row" key={rowIndex}>
+                            <div className="seat-cols">
+                                {console.log(row.rowname)}
 
-                            return (
+                                {row.cols[0].seats.map((seat: any, seatIndex: any) => {
+                                    seat.seatId = `${row.rowname}${seatIndex + 1}`;
+                                    seat.price = row.price;
+                                    seat.rowname = row.rowname;
 
-                                <div key={seatIndex}>
-                                    {seat.isWalkway ? (
-                                        <span className='seat-iswalkway'>
-                                            <div className='f'>{row.rowname}{seatIndex + 1}</div>
-                                        </span>
-                                    ) : (
-                                        <span
-                                            className={'seat-available'}
-                                            onClick={() => selectdeselectseat(seat)}
-                                        >
-                                            <div className='f'>{row.rowname}{seatIndex + 1}</div>
-                                        </span>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
+                                    return (
+
+                                        <div key={seatIndex}>
+                                            {seat.isWalkway ? (
+                                                <span className='seat-iswalkway'>
+                                                    <div className='q'>{row.rowname}{seat.seat_id}</div>
+                                                </span>
+                                            ) : (
+                                                <span
+                                                    className={'seat-available'}
+                                                    onClick={() => selectdeselectseat(seat)}
+                                                >
+                                                    <div className='q'>{row.rowname}{seat.seat_id}</div>
+                                                </span>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+
+                            </div>
+                        </div>
+                    ))}
+                    <br></br>
+                   
                 </div>
-            ))}
+
+            ) : (
+                <p>Loading...</p>
+            )}
             <button onClick={handleSubmit}>Thêm màn hình</button>
         </div>
     );
