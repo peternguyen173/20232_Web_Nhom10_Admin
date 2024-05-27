@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
+// import {Knock} from '@knocklabs/node'
 interface Movie {
     title: string;
     description: string;
@@ -102,6 +102,19 @@ const CreateMoviePage = () => {
     }
     const handleCreateMovie = async () => {
         try {
+            // const knockClient = new Knock("sk_test_CxObjuVUM9OkqeH58OrwTcHl-15km9uxc6nouPtGJqM");
+            //  console.log(knockClient);
+  
+            // await knockClient.notify('movie',{
+            //     actor: "123456",
+            //     // recipients: otherUsers.map(user=>user.password),
+            //     recipients:["123"],
+            //     data : {
+            //         workout: {
+            //             value:  "ok"
+            //         }
+            //     }
+            // });
 
             if (
                 movie.title === "" ||
@@ -110,9 +123,8 @@ const CreateMoviePage = () => {
                 movie.duration === 0 ||
                 movie.language === ""
             ) {
-                toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: 'top-center',
-
+                toast.error("Please fill all the fields", {
+                    position: toast.POSITION.TOP_CENTER,
                 });
                 return;
             }
@@ -123,9 +135,8 @@ const CreateMoviePage = () => {
             if (movie.portraitImg) {
                 portraitImgUrl = await uploadImage(movie.portraitImg);
                 if (!portraitImgUrl) {
-                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: 'top-center',
-
+                    toast.error("Portrait Image upload failed", {
+                        position: toast.POSITION.TOP_CENTER,
                     });
                     return;
                 }
@@ -133,9 +144,8 @@ const CreateMoviePage = () => {
             if (movie.landscapeImg) {
                 landscapeImgUrl = await uploadImage(movie.landscapeImg);
                 if (!landscapeImgUrl) {
-                    toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: 'top-center',
-
+                    toast.error("Landscape Image upload failed", {
+                        position: toast.POSITION.TOP_CENTER,
                     });
                     return;
                 }
@@ -159,14 +169,13 @@ const CreateMoviePage = () => {
                 const data = await response.json();
                 console.log("Movie creation successful", data);
 
-                toast.success('Hãy điền đẩy đủ các trường thông tin', {
-                    position: 'top-center',
+                toast.success("Movie Created Successfully", {
+                    position: toast.POSITION.TOP_CENTER,
                 });
             } else {
                 console.error("Movie creation failed", response.statusText);
-                toast.error('Hãy điền đẩy đủ các trường thông tin', {
+                toast.error("Movie Creation Failed", {
                     position: toast.POSITION.TOP_CENTER,
-
                 });
             }
         }

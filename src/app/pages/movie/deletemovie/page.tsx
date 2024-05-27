@@ -61,7 +61,7 @@ const DeleteMoviePage = () => {
                 } else {
                     console.error("Failed to fetch movies");
                     toast.error("Failed to fetch movies", {
-                        position: 'top-center',
+                        position: toast.POSITION.TOP_CENTER,
                     });
                 }
             } catch (error) {
@@ -94,7 +94,7 @@ const DeleteMoviePage = () => {
                 } else {
                     console.error("Failed to fetch movie details");
                     toast.error("Failed to fetch movie details", {
-                        position: 'top-center',
+                        position: toast.POSITION.TOP_CENTER,
                     });
                 }
             } catch (error) {
@@ -124,12 +124,12 @@ const DeleteMoviePage = () => {
                 // Xóa phim khỏi danh sách movies hiển thị
                 setMovies(movies.filter((movie) => movie._id !== movieId));
                 toast.success("Movie deleted successfully", {
-                    position: 'top-center',
+                    position: toast.POSITION.TOP_CENTER,
                 });
             } else {
                 console.error("Failed to delete movie");
                 toast.error("Failed to delete movie", {
-                    position: 'top-center',
+                    position: toast.POSITION.TOP_CENTER,
                 });
             }
         } catch (error) {
