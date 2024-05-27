@@ -1,18 +1,14 @@
 'use client'
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-<<<<<<< HEAD
-// import {Knock} from '@knocklabs/node'
-=======
 import './movie.css';
 
->>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
 interface Movie {
     title: string;
     description: string;
     portraitImgUrl: string;
     portraitImg: File | null;
-    landscapeImgUrl: String;
+    landscapeImgUrl: string;
     landscapeImg: File | null;
     language: string;
     director: string;
@@ -22,6 +18,7 @@ interface Movie {
     genre: string[];
     duration: number;
 }
+
 const CreateMoviePage = () => {
     const [movie, setMovie] = useState<Movie>({
         title: "",
@@ -38,6 +35,7 @@ const CreateMoviePage = () => {
         genre: [],
         duration: 0,
     });
+
     const genres = [
         "Hành động",
         "Hài kịch",
@@ -48,37 +46,41 @@ const CreateMoviePage = () => {
         "Giật gân",
         "Âm nhạc",
     ];
+
     const handleGenreChange = (genre: string) => {
         if (movie.genre.includes(genre)) {
             setMovie({
                 ...movie,
                 genre: movie.genre.filter((selectedGenre) => selectedGenre !== genre),
             });
-        }
-        else {
+        } else {
             setMovie({ ...movie, genre: [...movie.genre, genre] });
-
         }
-    }
-    const [actorName, setActorName] = useState<string>(""); // Thêm state mới để lưu trữ tên diễn viên mới
-    const [releaseDate, setReleaseDate] = useState<string>(""); // Tạo state mới cho ngày phát hành
+    };
 
+    const [actorName, setActorName] = useState<string>(""); // State to store the new actor name
+    const [releaseDate, setReleaseDate] = useState<string>(""); // State for release date
 
-    const handleCastChange = () => {
-        const updatedCast = [...movie.cast, actorName]; // Thêm tên diễn viên mới vào danh sách cast
-        setMovie({ ...movie, cast: updatedCast });
-        setActorName(""); // Reset giá trị của tên diễn viên sau khi thêm vào danh sách
-    }
+    const handleCastChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault(); // Prevent form submission
+        if (actorName.trim()) {
+            const updatedCast = [...movie.cast, actorName]; // Add new actor name to the cast list
+            setMovie({ ...movie, cast: updatedCast });
+            setActorName(""); // Reset the actor name input
+        }
+    };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setMovie({ ...movie, [name]: value });
     };
+
     const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setReleaseDate(value);
         setMovie({ ...movie, releasedate: new Date(value) });
-    }
+    };
+
     const uploadImage = async (image: File) => {
         try {
             const formData = new FormData();
@@ -99,28 +101,15 @@ const CreateMoviePage = () => {
                 console.error("Failed to upload the image.");
                 return null;
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.error("Error:", error);
             return null;
         }
-    }
-    const handleCreateMovie = async () => {
-        try {
-            // const knockClient = new Knock("sk_test_CxObjuVUM9OkqeH58OrwTcHl-15km9uxc6nouPtGJqM");
-            //  console.log(knockClient);
-  
-            // await knockClient.notify('movie',{
-            //     actor: "123456",
-            //     // recipients: otherUsers.map(user=>user.password),
-            //     recipients:["123"],
-            //     data : {
-            //         workout: {
-            //             value:  "ok"
-            //         }
-            //     }
-            // });
+    };
 
+    const handleCreateMovie = async (event: React.FormEvent) => {
+        event.preventDefault(); // Prevent form submission
+        try {
             if (
                 movie.title === "" ||
                 movie.description === "" ||
@@ -179,169 +168,161 @@ const CreateMoviePage = () => {
                 });
             } else {
                 console.error("Movie creation failed", response.statusText);
-<<<<<<< HEAD
-                toast.error("Movie Creation Failed", {
-                    position: toast.POSITION.TOP_CENTER,
-=======
-                toast.error('Hãy điền đẩy đủ các trường thông tin', {
-                    position: 'top-center',
 
->>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
+                toast.error("Hãy điền đầy đủ các trường thông tin", {
+                    position: "top-center",
                 });
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.error("An error occurred during movie creation", error);
         }
-    }
+    };
 
     return (
         <section>
-            <form>
-        <div className="formpage">
-            <div className = "hu">
-            <div className = "hi">
-        <label>Tên phim: </label>
-            <input
-                type="text"
-                name="title"
-                placeholder="Tên phim"
-                value={movie.title}
-                onChange={handleInputChange}
-            />
-            </div>
-            <div>
-            <label>Đạo diễn: </label>
-                <input
-                    type="text"
-                    placeholder="Đạo diễn"
-                    name="director"
-                    value={movie.director}
-                    onChange={handleInputChange} // Sử dụng handleInputChange cho trường đạo diễn
-                />
-            </div>
-            </div>
-            <br />
-            <div className = "hu">
-            <div className = "hi">
-            <label>Ngôn ngữ: </label>
-                <input
-                    type="text"
-                    placeholder="Ngôn ngữ"
-                    name="language"
-                    value={movie.language}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div>
-            <label>Ngày ra mắt: </label>
-                <input
-                    type="date"
-                    placeholder="Ngày ra mắt:"
-                    name="releasedate"
-                    value={releaseDate}
-                    onChange={handleDateChange}
-                />
-            </div>
-            </div>
-            <br />
-            <div className = "ntd3">
-            <label>Nội dung: </label>
-            <input
-                className = "outform"
-                type="text"
-                name="description"
-                placeholder="Nội dung phim"
-                value={movie.description}
-                onChange={handleInputChange}
-            />
-            </div>
-            <br />
-            <div className = "ntd3">
-            <label >Ảnh đại diện: </label>
-            <input
-            
-                type="file"
-                accept="image/*"
-                onChange={(event) => {
-                    if (event.target.files && event.target.files.length > 0) {
-                        setMovie({ ...movie, portraitImg: event.target.files[0] })
-                    }
-                }}
-            />
-            </div>
-            <br />
-            <div className = "ntd3">
-            <label>Ảnh bìa: </label>
-            <input
-                type="file"
-                accept="image/*"
-                onChange={(event) => {
-                    if (event.target.files && event.target.files.length > 0) {
-                        setMovie({ ...movie, landscapeImg: event.target.files[0] })
-                    }
-                }}
-            />
-            </div>
-            <br />
-            <div className = "ntd3">
-            <label>Đánh giá: </label>
-            <input
-                type="text"
-                name="rated"
-                placeholder="Đánh giá"
-                value={movie.rated}
-                onChange={handleInputChange}
-            />
-            </div>
-            <br />
-            <p>Chọn thể loại:</p>
-            <br />
-            <div className = "f">
-                {genres.map((genre) => (
-                    <label className = "hh" key={genre}>
+            <form onSubmit={handleCreateMovie}>
+                <div className="formpage">
+                    <div className="hu">
+                        <div className="hi">
+                            <label>Tên phim: </label>
+                            <input
+                                type="text"
+                                name="title"
+                                placeholder="Tên phim"
+                                value={movie.title}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div>
+                            <label>Đạo diễn: </label>
+                            <input
+                                type="text"
+                                placeholder="Đạo diễn"
+                                name="director"
+                                value={movie.director}
+                                onChange={handleInputChange} // Using handleInputChange for director field
+                            />
+                        </div>
+                    </div>
+                    <br />
+                    <div className="hu">
+                        <div className="hi">
+                            <label>Ngôn ngữ: </label>
+                            <input
+                                type="text"
+                                placeholder="Ngôn ngữ"
+                                name="language"
+                                value={movie.language}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div>
+                            <label>Ngày ra mắt: </label>
+                            <input
+                                type="date"
+                                placeholder="Ngày ra mắt:"
+                                name="releasedate"
+                                value={releaseDate}
+                                onChange={handleDateChange}
+                            />
+                        </div>
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Nội dung: </label>
                         <input
-                            type="checkbox"
-                            name="genre"
-                            checked={movie.genre.includes(genre)}
-                            onChange={() => handleGenreChange(genre)}
+                            className="outform"
+                            type="text"
+                            name="description"
+                            placeholder="Nội dung phim"
+                            value={movie.description}
+                            onChange={handleInputChange}
                         />
-                        {genre}
-                    </label>
-                ))}
-            </div>
-
-
-            <br />
-            <div className = "ntd3">
-            <label>Thời lượng: </label>
-            <input
-                type="number"
-                name="duration"
-                placeholder="Duration"
-                value={movie.duration}
-                onChange={handleInputChange}
-            />
-            </div>
-            <br />
-            <div className = "ntd3">
-                <label>Tên diễn viên: </label>
-                <input
-                    type="text"
-                    placeholder="Tên diễn viên"
-                    onChange={(e) => setActorName(e.target.value)}
-                    value={actorName}
-                />
-                <button onClick={handleCastChange}>Thêm diễn viên</button>
-            </div>
-            <div>
-                <p>{movie.cast.join(", ")}</p>
-            </div>
-            <button onClick={handleCreateMovie}>Thêm phim</button>
-
-        </div>
-        </form>
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Ảnh đại diện: </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(event) => {
+                                if (event.target.files && event.target.files.length > 0) {
+                                    setMovie({ ...movie, portraitImg: event.target.files[0] });
+                                }
+                            }}
+                        />
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Ảnh bìa: </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(event) => {
+                                if (event.target.files && event.target.files.length > 0) {
+                                    setMovie({ ...movie, landscapeImg: event.target.files[0] });
+                                }
+                            }}
+                        />
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Đánh giá: </label>
+                        <input
+                            type="text"
+                            name="rated"
+                            placeholder="Đánh giá"
+                            value={movie.rated}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <br />
+                    <p>Chọn thể loại:</p>
+                    <br />
+                    <div className="f">
+                        {genres.map((genre) => (
+                            <label className="hh" key={genre}>
+                                <input
+                                    type="checkbox"
+                                    name="genre"
+                                    checked={movie.genre.includes(genre)}
+                                    onChange={() => handleGenreChange(genre)}
+                                />
+                                {genre}
+                            </label>
+                        ))}
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Thời lượng: </label>
+                        <input
+                            type="number"
+                            name="duration"
+                            placeholder="Thời lượng"
+                            value={movie.duration}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <br />
+                    <div className="ntd3">
+                        <label>Tên diễn viên: </label>
+                        <input
+                            type="text"
+                            placeholder="Tên diễn viên"
+                            onChange={(e) => setActorName(e.target.value)}
+                            value={actorName}
+                        />
+                        <button onClick={handleCastChange}>Thêm diễn viên</button>
+                    </div>
+                    <div>
+                        <p>{movie.cast.join(", ")}</p>
+                    </div>
+                    <button type="submit">Thêm phim</button>
+                </div>
+            </form>
+            <ToastContainer />
         </section>
-    )
-}
+    );
+};
+
 export default CreateMoviePage;
