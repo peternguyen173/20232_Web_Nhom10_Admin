@@ -63,7 +63,7 @@ const EditMoviePage = () => {
                 } else {
                     console.error("Failed to fetch movies");
                     toast.error("Failed to fetch movies", {
-                        position: 'top-center',
+                        position: toast.POSITION.TOP_CENTER,
                     });
                 }
             } catch (error) {
@@ -96,7 +96,11 @@ const EditMoviePage = () => {
                 } else {
                     console.error("Failed to fetch movie details");
                     toast.error("Failed to fetch movie details", {
+<<<<<<< HEAD
+                        position: toast.POSITION.TOP_CENTER,
+=======
                         position: 'top-center',
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                     });
                 }
             } catch (error) {
@@ -188,12 +192,20 @@ const EditMoviePage = () => {
 
             if (response.ok) {
                 toast.success("Movie updated successfully", {
+<<<<<<< HEAD
+                    position: toast.POSITION.TOP_CENTER,
+=======
                     position: 'top-center',
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                 });
             } else {
                 console.error("Failed to update movie");
                 toast.error("Failed to update movie", {
+<<<<<<< HEAD
+                    position: toast.POSITION.TOP_CENTER,
+=======
                     position: 'top-center',
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                 });
             }
         } catch (error) {
@@ -205,6 +217,21 @@ const EditMoviePage = () => {
 
     return (
         <div className="edit-movie-page">
+<<<<<<< HEAD
+            <br></br>
+            <h2>Danh sách các phim:</h2>
+            <br></br>
+
+            {movies.length > 0 && movies.map((movie) => (
+                <div key={movie._id}>
+                    <span>{movie.title}</span>
+                    <button onClick={() => handleSelectMovie(movie._id)}>Chỉnh sửa</button>
+                </div>
+            ))}
+
+            {selectedMovie._id && (
+                <div>
+=======
             
             <div className="fl-table">
             <br></br>
@@ -235,6 +262,7 @@ const EditMoviePage = () => {
                 <div className="formpage">
                 <div className = "hu">
                 <div className = "hi">
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                     {/* Hiển thị các trường thông tin của phim dựa trên selectedMovieId */}
                     <label>Tên</label>
                     <input
@@ -243,6 +271,8 @@ const EditMoviePage = () => {
                         value={selectedMovie.title}
                         onChange={handleInputChange}
                     />
+<<<<<<< HEAD
+=======
                     </div>
                     <div>
                     <label>Đạo diễn</label>
@@ -277,6 +307,7 @@ const EditMoviePage = () => {
                     </div>
                      <br />
                      <div className = "ntd3">
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                     <label>Mô tả</label>
                     <input
                         type="text"
@@ -284,9 +315,13 @@ const EditMoviePage = () => {
                         value={selectedMovie.description}
                         onChange={handleInputChange}
                     />
+<<<<<<< HEAD
+                    <div>
+=======
                      </div>
                      <br />
                      <div className = "ntd3">
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                         <label>Ảnh đại diện</label>
                         <input
                             type="file"
@@ -296,9 +331,14 @@ const EditMoviePage = () => {
                         {selectedMovie.portraitImgUrl && (
                             <img src={selectedMovie.portraitImgUrl} alt="Portrait" style={{ width: "200px", height: "200px" }} />
                         )}
+<<<<<<< HEAD
+                    </div>
+                    <div>
+=======
                          </div>
                           <br />
                           <div className = "ntd3">
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                         <label>Ảnh bìa</label>
                         <input
                             type="file"
@@ -308,6 +348,23 @@ const EditMoviePage = () => {
                         {selectedMovie.landscapeImgUrl && (
                             <img src={selectedMovie.landscapeImgUrl} alt="Landscape" style={{ width: "200px", height: "200px" }} />
                         )}
+<<<<<<< HEAD
+                    </div>
+                    <label>Ngôn ngữ</label>
+                    <input
+                        type="text"
+                        name="language"
+                        value={selectedMovie.language}
+                        onChange={handleInputChange}
+                    />
+                    <label>Đạo diễn</label>
+                    <input
+                        type="text"
+                        name="director"
+                        value={selectedMovie.director}
+                        onChange={handleInputChange}
+                    />
+=======
                          </div>
                          <br />
                          <div className = "ntd3">
@@ -343,6 +400,7 @@ const EditMoviePage = () => {
                      <br />
 
                      <div className = "ntd3">
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                     <label>Diễn viên</label>
                     <input
                         type="text"
@@ -350,19 +408,53 @@ const EditMoviePage = () => {
                         value={selectedMovie.cast.join(',')}
                         onChange={handleInputChange}
                     />
+<<<<<<< HEAD
+                    <label>Ngày khởi chiếu</label>
+                    <input
+                        type="date"
+                        name="releasedate"
+                        value={selectedMovie.releasedate.toString().slice(0, 10)}
+                        onChange={handleInputChange}
+                    />
+                    <label>Rated</label>
+                    <input
+                        type="text"
+                        name="rated"
+                        value={selectedMovie.rated}
+                        onChange={handleInputChange}
+                    />
+                    <label>Thể loại</label>
+                    <input
+                        type="text"
+                        name="genre"
+                        value={selectedMovie.genre.join(',')}
+                        onChange={handleInputChange}
+                    />
+                    <label>Thời lượng</label>
+                    <input
+                        type="numver"
+                        name="duration"
+                        value={selectedMovie.duration.toString()}
+                        onChange={handleInputChange}
+                    />
+=======
                     </div>
                     
                     
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
                     {/* Các trường thông tin khác của phim */}
                     <br></br><br></br>
                     <button onClick={handleUpdateMovie}>Lưu thay đổi</button>
 
                 </div>
 
+<<<<<<< HEAD
+=======
                 
                 </form>
                 </section>
 
+>>>>>>> 9f571c149a5cbd771602eae2990c7a2a7cc9b549
             )}
             <ToastContainer />
         </div>

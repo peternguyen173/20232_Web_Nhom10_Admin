@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import './auth.css';
 import { ToastContainer, toast } from 'react-toastify';
-
-
+import Image from 'next/image';
+import logo from '../logo.png';
 const SigninPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,28 +50,76 @@ const SigninPage = () => {
 
 
     return (
-        <div className='formpage'>
-            <div className='tdn'>
-                <label>Tên đăng nhập</label>
-                <input
-                    type='email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Mật khẩu</label>
-                <input
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
+        <div className='authout'>
+            <div className='authin'>
+                <div className="left">
+                    <Image src={logo} alt="" className='img' />
+                </div>
+                <div className='right'>
+                    <form
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <div className="forminput_cont">
+                            <div><label>Tên đăng nhập</label></div> 
+                            <div> <input
+                                type='email'
+                                placeholder='Email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            </div>
+                        </div>
+                        <div className="forminput_cont">
+                            <div><label>Mật khẩu</label></div> 
+                            <div> 
+                                <input
+                                    type='password'
+                                    placeholder='Password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div> 
+                        </div>
 
-            <button onClick={handleSignin}>Sign in</button>
+                        <button type="submit" className="main_button" onClick={handleSignin}>
+                            ĐĂNG NHẬP
+                        </button>
+                        {/* <button type="submit" className="main_button"  onClick={handleSignin}>
+                          <span>  ĐĂNG NHẬP VỚI GOOGLE </span>
+                        </button> */}
+
+                    </form>
+                   
+                </div>
+            </div>
         </div>
+        // <div className='formpage'>
+        //     <div className='tdn'>
+        //         <label>Tên đăng nhập</label>
+        //         <input
+        //             type='email'
+        //             placeholder='Email'
+        //             value={email}
+        //             onChange={(e) => setEmail(e.target.value)}
+        //         />
+        //     </div>
+        //     <div>
+        //         <label>Mật khẩu</label>
+        //         <input
+        //             type='password'
+        //             placeholder='Password'
+        //             value={password}
+        //             onChange={(e) => setPassword(e.target.value)}
+        //         />
+        //     </div>
+
+        //     <button onClick={handleSignin}>Sign in</button>
+        // </div>
     )
 }
 
